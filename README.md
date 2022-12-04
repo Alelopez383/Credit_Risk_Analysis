@@ -69,13 +69,39 @@ The confusion matrix was built with the following results:
 
 In this model, there are less loans predicted as high risk thatn the previous model, and more loans prediected as low risk, which can be harmful if we want to predict credit risk.
 
-The classification reportshow that the precision of the model with a SMOTE oversamplig for low risk is still **1**, a very good one; the recall (sensitivity) improved marginally to **0.66**, what it means that, the model still have many false negatives. Although the F1 score for predicitng low risk loans are the same as before **0.79** which is an ok balance between precision an recall. Overall, the **SMOTE oversampling predictive accuracy is 0.651** meaning that the model was correct **65.1%** of the time, a litlle better that the random oversampling model.
+The classification report shows that the precision of the model with a SMOTE oversamplig for low risk is still **1**, a very good one; the recall (sensitivity) improved marginally to **0.66**, what it means that, the model still have many false negatives. Although the F1 score for predicitng low risk loans are the same as before **0.79** which is an ok balance between precision an recall. Overall, the **SMOTE oversampling predictive accuracy is 0.651** meaning that the model was correct **65.1%** of the time, a litlle better that the random oversampling model.
 
 In summary, the metrics of the minority class (recall, and F1 score) are slightly improved over those of random oversampling. SMOTE reduces the risk of oversampling, but its vulnerability to outliers: So this model, even if improved, still not the best model to predict credit risk, maybe we have to do more preprocessing the data to check for big outliers, because if there are extreme outliers, the new values creted bay SMOTE will reflect it.
 
 ![image](https://user-images.githubusercontent.com/43974872/205479225-90033d0a-02c1-4813-bde6-683372f37cb5.png)
 
+### 3. Undersampling
+In **Undersampling** instead of increasing the number of the minority class, the size of the majority class is decreased; so only uses actual data, therefore is practical only when there is enough data in the training set. In particular, the **Cluster centroid undersampling** identifies clusters of the majority class, then generates synthetic data points, called centroids, that are representative of the clusters. The majority class is then undersampled down to the size of the minority class.
+The balance of the set
+- low_risk (1)= 260 values
+- high_risk (0) = 260 values
+- 
+The confusion matrix was built with the following results:
 
+![image](https://user-images.githubusercontent.com/43974872/205479414-b1abf8e2-30ec-442f-810f-516988295084.png)
+
+- Out of 87 high risk loans, (Actual high risk), 51 were predicted to be true (Predicted high risk), which we call true positives.
+- Out of 87 high risk loans, (Actual high risk), 36 were predicted to be false (Predicted low risk), which are considered false negatives.
+- Out of 17118 low risk loans (Actual low risk), 9679 were predicted to be false (Predicted high risk) and are considered false positives.
+- Out of 17118 low risk loans (Actual low risk), 7439 were predicted to be true (Predicted low risk) and are considered true negatives.
+- Predicted high risk = 9,730
+- Predicted low risk =  7,475
+- Actual high risk = 87
+- Actual low risk = 17,118 
+- Total observations= 17,205
+- 
+In this model, there are more loans predicted as high risk than the two previous model, and less loans predicted as low risk, which can be more helpful to predict credit risk.
+
+The classification report shows that the precision of the model with a **Cluster centroid undersampling** for low risk is still **1**, a very good one; the recall (sensitivity) dropped to **0.43**, what it means that, the model have a lot of false negatives. Although the F1 score for predicitng low risk loans decrease to **0.60** which means there is no balance between precision an recall. Overall, the **Cluster centroid undersampling accuracy is 0.51** meaning that the model was correct **51%** of the time, worst accuracy than the two previous models.
+
+In summary, the resultswere worse than those from random undersampling and SMOTE. Therefore, the **Cluster centroid undersampling** attempted to address imbalance, but does not guarantee better results.
+
+![image](https://user-images.githubusercontent.com/43974872/205479804-13471c34-ba4c-4d2c-8d60-91879571d611.png)
 
 ## 2. Using SMOTEENN algorithm to Predict Credit Risk
 ## 3. Using Ensemble Classifiers to Predict Credit Risk
