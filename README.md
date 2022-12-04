@@ -40,9 +40,41 @@ A confusion matrix was built with the following results:
 - Actual low risk = 17,118 
 - Total observations= 17,205
 
-Also, a classification report was built. The recisión of the model with a random oversamplig for low risk is **1**, a very good one; but the recall (sensitivity) is **0.65**, what means that is not so good beacause it means thatthere are many of false negatives. Although the F1 score for predicitng low risk loans are **0.79** what means is a ok balance between precision an recall. The **F1 score** is a weighted average of the true positive rate (recall) and precision, where the best score is 1.0 and the worst is 0.0. Overall, the **Random oversampling predictive accuracy is 0.625** meaning that the model was correct **62.5%** of the time.
+Also, a classification report was built. The precisión of the model with a random oversamplig for low risk is **1**, a very good one; but the recall (sensitivity) is **0.65**,it  what means is not so good beacause there are many false negatives. Although the F1 score for predicitng low risk loans are **0.79** which is an ok balance between precision an recall. The **F1 score** is a weighted average of the true positive rate (recall) and precision, where the best score is 1.0 and the worst is 0.0. Overall, the **Random oversampling predictive accuracy is 0.625** meaning that the model was correct **62.5%** of the time.
 
 ![image](https://user-images.githubusercontent.com/43974872/205478252-afd5fa06-8c33-4716-b632-7eadc5e926a4.png)
+
+In summary, this model may not be the best one for predict credit risk because the model's accuracy, 0.625, is low, and the precision and recall are not good enough to state that the model will be good at classifying high risk loans. To have a better model, may be we need more data.
+
+### 2. SMOTE Oversampling
+The **synthetic minority oversampling technique (SMOTE)**, like random oversampling, the size of the minority is increased, but because it create new instances are interpolated.Random oversampling draws from existing observations, whereas SMOTE generates synthetic observations, for an instance from the minority class, a number of its closest neighbors is chosen. Based on the values of these neighbors, new values are created.
+
+Now the balance of the set is the same as the random oversampling:
+- low_risk (1)= 51,352 values
+- high_risk (0) = 51,352 values
+- 
+The confusion matrix was built with the following results:
+
+![image](https://user-images.githubusercontent.com/43974872/205478903-2f39f870-4df4-4696-9100-5260bf164379.png)
+
+- Out of 87 high risk loans, (Actual high risk), 56 were predicted to be true (Predicted high risk), which we call true positives.
+- Out of 87 high risk loans, (Actual high risk), 31 were predicted to be false (Predicted low risk), which are considered false negatives.
+- Out of 17118 low risk loans (Actual low risk), 5840 were predicted to be false (Predicted high risk) and are considered false positives.
+- Out of 17118 low risk loans (Actual low risk), 11278 were predicted to be true (Predicted low risk) and are considered true negatives.
+- Predicted high risk = 5,896
+- Predicted low risk =  11,309
+- Actual high risk = 87
+- Actual low risk = 17,118 
+- Total observations= 17,205
+
+In this model, there are less loans predicted as high risk thatn the previous model, and more loans prediected as low risk, which can be harmful if we want to predict credit risk.
+
+The classification reportshow that the precision of the model with a SMOTE oversamplig for low risk is still **1**, a very good one; the recall (sensitivity) improved marginally to **0.66**, what it means that, the model still have many false negatives. Although the F1 score for predicitng low risk loans are the same as before **0.79** which is an ok balance between precision an recall. Overall, the **SMOTE oversampling predictive accuracy is 0.651** meaning that the model was correct **65.1%** of the time, a litlle better that the random oversampling model.
+
+In summary, the metrics of the minority class (recall, and F1 score) are slightly improved over those of random oversampling. SMOTE reduces the risk of oversampling, but its vulnerability to outliers: So this model, even if improved, still not the best model to predict credit risk, maybe we have to do more preprocessing the data to check for big outliers, because if there are extreme outliers, the new values creted bay SMOTE will reflect it.
+
+![image](https://user-images.githubusercontent.com/43974872/205479225-90033d0a-02c1-4813-bde6-683372f37cb5.png)
+
 
 
 ## 2. Using SMOTEENN algorithm to Predict Credit Risk
