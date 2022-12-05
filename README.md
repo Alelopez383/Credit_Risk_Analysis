@@ -182,10 +182,5 @@ Confusion matrix results:
 The classification report shows that the precision of the model with a **Easy Ensemble Classifier** for low risk is **1**, a very good one; the recall (sensitivity) is **0.94**, what it means that, the model doesnt have almost any false negatives. The F1 score for predicitng low risk loans improved to **0.97** which means there is balance between precision an recall for low risk loans, its also show a improvement in the F1 score for hig risk loans (**0.16**). Overall, the **BEasy Ensemble Classifier accuracy is 0.931** meaning that the model was correct **93.1%** of the time, better accuracy than the all the previous models, inlcuding, the Balanced Random Forest Classifier.
 
 
-# Analysis Report
-
-## 1. Overview of the analysis: Explain the purpose of this analysis.
-
-## 2. Results: Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all six machine learning models. Use screenshots of your outputs to support your results.There is a bulleted list that describes the balanced accuracy score and the precision and recall scores of all six machine learning models
-
-## 3. Summary: Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. If you do not recommend any of the models, justify your reasoning.
+# Analysis Report Summary
+After an exhaustive analysis testing six different predictive models and with different forms of sampling, the model with the best results in both F1 score, recall, precision and predictive accuracy is Easy Emsamble Classifier.
