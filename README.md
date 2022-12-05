@@ -135,6 +135,35 @@ In summary, the results were better than those from random undersampling and und
 
 ## 3. Using Ensemble Classifiers to Predict Credit Risk
 
+### 1. Balanced Random Forest Classifier
+Ensemble classifiers have shown to improve classification performance compare to single learner. However, they will be affected by class imbalance. The **Balanced Random Forest** randomly under-samples each boostrap sample to balance it.
+
+
+![image](https://user-images.githubusercontent.com/43974872/205524557-0f007def-3a88-4008-9c31-312cca96ab58.png)
+
+Results from the confusion matrix:
+
+- Out of 101 high risk loans, (Actual high risk), 71 were predicted to be true (Predicted high risk), which we call true positives.
+- Out of 101 high risk loans, (Actual high risk), 30 were predicted to be false (Predicted low risk), which are considered false negatives.
+- Out of 17,104 low risk loans (Actual low risk), 2,153 were predicted to be false (Predicted high risk) and are considered false positives.
+- Out of 17,104 low risk loans (Actual low risk), 14,951 were predicted to be true (Predicted low risk) and are considered true negatives.
+- Predicted high risk = 2,224
+- Predicted low risk = 14,981
+- Actual high risk = 101
+- Actual low risk = 17,104
+- Total observations= 17,205
+
+The classification report shows that the precision of the model with a **Balanced Random Forest Classifier** for low risk is **1**, a very good one; the recall (sensitivity) is **0.87**, what it means that, the model doesnt have almost false negatives. The F1 score for predicitng low risk loans improved to **0.93** which means there is balance between precision an recall for low risk loans, ist also show a improvement in the F1 score for hig risk loans (**0.06**). Overall, the **SBalanced Random Forest Classifier accuracy is 0.788** meaning that the model was correct **78.8%** of the time, better accuracy than the all the previous models.
+
+![image](https://user-images.githubusercontent.com/43974872/205524565-471074e9-acdf-4eee-937d-5cbe79dd0974.png)
+
+In summary, the results were better than all the model we tried before. Also, the main features ares: 'total_rec_prncp', total_pymnt' and 'total_pymnt_inv'.
+
+![image](https://user-images.githubusercontent.com/43974872/205525010-aa0f5c28-ed8e-4fd3-a9c8-1ed1f13be51d.png)
+
+
+### 2. Easy Ensemble Classifier
+
 # Analysis Report
 
 ## 1. Overview of the analysis: Explain the purpose of this analysis.
